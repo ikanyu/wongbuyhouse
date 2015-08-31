@@ -1,0 +1,38 @@
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PropWall</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">iProperty</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <table class="table table-striped">
+        <tr>
+          <td>Name</td>
+          <td>Date</td>
+          <td>No of Bed</td>
+          <td>Furnished?</td>
+          <td>Size</td>
+          <td>Price</td>
+        </tr>
+      <% @parent.each do |key,value| %>
+        <tr>
+
+          <td><a href="<%= value['link'] %>"><%= value['name'] %></a></td>
+          <td><%= value['date'] %></td>
+          <td><%= value['bed'] %></td>
+          <td><%= value['furnish'] %></td>
+          <td><%= value['size'] %></td>
+          <td><%= number_with_delimiter(value['price']) %></td>
+        </tr> 
+      <% end %> 
+        </tr>
+    </table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">asda</div>
+  </div>
+
+</div>
