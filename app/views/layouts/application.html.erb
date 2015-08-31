@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Personal</title>
+  <title>House Listing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
@@ -27,7 +27,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Seri Maya', serimaya_path %></li>
+        <li class="active"><%= link_to 'Seri Maya', serimaya_path %></li>
         <li><%= link_to 'Prima16', prima16_path %></li>
 <!--         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -65,6 +65,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 <body>
+<div class="alert alert-info" role="alert">Search Results based on the past 30 days</div>
 <div id="spinner">
 	<div class="sk-fading-circle">
   <div class="sk-circle1 sk-circle"></div>
