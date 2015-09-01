@@ -1,6 +1,6 @@
 require 'date'
-class Prima16sController < ApplicationController
-		def index
+class TwoeighteightresidencesController < ApplicationController
+	def index
 		@temp = []
 		link = []
 		@temp1 = Hash.new
@@ -8,20 +8,19 @@ class Prima16sController < ApplicationController
 		starts = (Date.today - 31)
 		counter = 1
 		while pagecounter <= 10
-			@temp << Nokogiri::HTML(open("http://www.propwall.my/petaling_jaya/prima_16/746?tab=classifieds&page=#{pagecounter}")).css('.media-body').text.split(' Info')
-			link << Nokogiri::HTML(open("http://www.propwall.my/petaling_jaya/prima_16/746?tab=classifieds&page=#{pagecounter}")).css('.media-heading a').map{|link| link['href']}
+			@temp << Nokogiri::HTML(open("http://www.propwall.my/kuchai/288_residences/7660?tab=classifieds&page=#{pagecounter}")).css('.media-body').text.split(' Info')
+			link << Nokogiri::HTML(open("http://www.propwall.my/kuchai/288_residences/7660?tab=classifieds&page=#{pagecounter}")).css('.media-heading a').map{|link| link['href']}
 			pagecounter += 1
 		end
 		@temp.each_with_index do |t,t_index|
 			t.each_with_index do |inner,i_index|
 				inner = inner.split(' ')
 				# byebug
-				inner.delete("Prima")
-				inner.delete("16,")
-				inner.delete("Petaling")
-				inner.delete("JayaPosted")
+				inner.delete("288")
+				inner.delete("Residences,")
+				inner.delete("KuchaiPosted")
 				inner.delete("by")
-				inner.delete("Furnished")
+				# inner.delete("on")
 				inner.delete("Condominium")
 				inner.delete("for")
 				inner.delete("sale")
@@ -31,7 +30,6 @@ class Prima16sController < ApplicationController
 				inner.delete("psf)Contact")
 				inner.delete("|")
 				inner.delete("More")
-				inner.delete("InfoSeri")
 				if Date.parse(inner[(inner.index('on')+1)][0..9]) > starts
 					@temp1[counter] = Hash.new
 					@temp1[counter]['name'] = inner[0..(inner.index('on')-1)].join(' ')
