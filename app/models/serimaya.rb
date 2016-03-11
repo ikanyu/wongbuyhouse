@@ -1,2 +1,2 @@
-class House < ActiveRecord::Base
+class Serimaya < ActiveRecord::Base
 end

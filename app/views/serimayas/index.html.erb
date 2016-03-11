@@ -1,37 +1,40 @@
-<div class="data-content">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PropWall</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">iProperty</a></li>
-  </ul>
+<div class='container'>
+  <div class="data-content">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">PropWall</a></li>
+      <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">iProperty</a></li>
+    </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <h1>Seri Maya</h1>
-    <div role="tabpanel" class="tab-pane active" id="home">
-      <table class="table table-striped">
-        <tr>
-          <td>Name</td>
-          <td>Date</td>
-          <td>No of Bed</td>
-          <td>Furnished?</td>
-          <td>Size</td>
-          <td>Price</td>
-        </tr>
-      <% @temp1.each do |key,value|%>
-        <tr>
-          <td><a href="<%= value['link'] %>"><%= value['name'] %></a></td>
-          <td><%= value['date'] %></td>
-          <td><%= value['bed'] %></td>
-          <td><%= value['furnish'] %></td>
-          <td><%= value['size'] %></td>
-          <td><%= number_with_delimiter(value['price']) %></td>
-        </tr> 
-      <% end %> 
-        </tr>
-    </table>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <h1>Seri Maya</h1>
+      <div role="tabpanel" class="tab-pane active" id="home">
+        <table class="table table-striped">
+          <tr>
+            <td>Name</td>
+            <td>Date</td>
+            <td>No of Bed</td>
+            <td>Furnished?</td>
+            <td>Size</td>
+            <td>Price</td>
+          </tr>
+        <% @houses.each do |house|%>
+          <tr>
+            <td><a href="<%= house.link %>"><%= house.name %></a></td>
+            <td><%= house.date %></td>
+            <td><%= house.bed %></td>
+            <td><%= house.furnish %></td>
+            <td><%= house.size %></td>
+            <td><%= number_with_delimiter(house.price) %></td>
+          </tr> 
+        <% end %> 
+          </tr>
+      </table>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile">To be added soon!</div>
     </div>
-    <div role="tabpanel" class="tab-pane" id="profile">To be added soon!</div>
+
   </div>
 
 </div>
