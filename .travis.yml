@@ -5,3 +5,5 @@ cache: bundler
 sudo: false
 services:
   - postgresql
+before_script:
+  - psql -c 'create database personal_test;' -U postgres
