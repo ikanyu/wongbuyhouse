@@ -16,9 +16,11 @@
 //= require_tree .
 $(document).on("page:change", function(){
   $(".data-content").removeClass('hidden');
+  $("h1").removeClass('hidden');
   $("#spinner").addClass('hidden');
 });
 $(document).on("page:before-change", function(){
   $("#spinner").removeClass('hidden');
   $(".data-content").addClass('hidden');
+  $("h1").addClass('hidden');
 });

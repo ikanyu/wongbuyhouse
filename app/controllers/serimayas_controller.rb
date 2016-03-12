@@ -1,7 +1,6 @@
 require 'date'
 class SerimayasController < ApplicationController
 	def index
-		# byebug
 		if Serimaya.all.empty? || ((Time.now - Serimaya.first.created_at)/1.hour).round >= 1
 			Serimaya.destroy_all
 			@temp = []
@@ -22,16 +21,16 @@ class SerimayasController < ApplicationController
 						house = Hash.new
 						house['name'] = inner[0..(inner.index('on')-1)].join(' ')
 						house['date'] = inner[(inner.index('on')+1)][0..9].to_date
-						house['size'] = inner[-3].to_i
+						house['size'] = inner[-3].gsub!(',','').to_i
 						house['price'] = (inner[-1]).gsub(/,/, '').to_i
 						house['link'] = link[t_index][i_index]
 						inner[(inner.index('on')+1)][10] != "*" ? house['bed'] = inner[(inner.index('on')+1)][10].to_i : house['bed'] = inner[(inner.index('on')+1)][11].to_i
 						if inner[(inner.index('on')+1)].include?("Fully")
-							house['furnish'] = "Fully"
+							house['furnish'] = "Fully furnished"
 						elsif inner[(inner.index('on')+1)].include?("Semi")
-							house['furnish'] = "Semi"
+							house['furnish'] = "Semi furnished"
 						else	
-							house['furnish'] = "No"
+							house['furnish'] = "Not furnished"
 						end
 						Serimaya.create(house)
 					end
