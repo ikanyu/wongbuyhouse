@@ -20,6 +20,7 @@ class SerimayasController < ApplicationController
 				imagecounter = 1
 				pagecounter += 1
 			end
+			image = image.in_groups_of(30)
 			@temp.each_with_index do |t,t_index|
 				t.each_with_index do |inner,i_index|
 					inner = inner.gsub("Seri Maya, SetiawangsaPosted by ","").gsub(/(?<=\().+?(?=\))/,'').gsub("() ","").gsub("for sale ","").gsub("sf","").gsub(" ()Contact | More","").gsub("# ","")
@@ -31,7 +32,7 @@ class SerimayasController < ApplicationController
 						house['size'] = inner[-3].gsub!(',','').to_i
 						house['price'] = (inner[-1]).gsub(/,/, '').to_i
 						house['link'] = link[t_index][i_index]
-						house['image_link'] = image[i_index]
+						house['image_link'] = image[t_index][i_index]
 						inner[(inner.index('on')+1)][10] != "*" ? house['bed'] = inner[(inner.index('on')+1)][10].to_i : house['bed'] = inner[(inner.index('on')+1)][11].to_i
 						if inner[(inner.index('on')+1)].include?("Fully")
 							house['furnish'] = "Fully furnished"
