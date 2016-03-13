@@ -1,7 +1,7 @@
 require 'date'
 class Prima16sController < ApplicationController
 	def index
-		if Prima16.all.empty? || ((Time.now - Prima16.first.created_at)/1.hour).round >= 1
+		if Prima16.all.empty? || ((Time.now - Prima16.first.created_at)/1.day).round >= 1
 			Prima16.destroy_all
 			@temp = []
 			link = []
