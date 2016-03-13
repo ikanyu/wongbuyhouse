@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 $(document).on("page:change", function(){
   $(".data-content").removeClass('hidden');

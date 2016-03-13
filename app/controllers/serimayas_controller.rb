@@ -5,12 +5,19 @@ class SerimayasController < ApplicationController
 			Serimaya.destroy_all
 			@temp = []
 			link = []
+			image = []
 			pagecounter = 1
+			imagecounter = 1
 			starts = (Date.today - 15)
 			counter = 1
 			while pagecounter <= 10
 				@temp << Nokogiri::HTML(open("http://www.propwall.my/setiawangsa/seri_maya/24?tab=classifieds&page=#{pagecounter}")).css('.media-body').text.split(' Info')
 				link << Nokogiri::HTML(open("http://www.propwall.my/setiawangsa/seri_maya/24?tab=classifieds&page=#{pagecounter}")).css('.media-heading a').map{|link| link['href']}
+				while imagecounter <= 30
+					image << Nokogiri::HTML(open("http://www.propwall.my/setiawangsa/seri_maya/24?tab=classifieds&page=#{pagecounter}")).at_xpath("//*[@id='list-content']/div[#{imagecounter}]/div[1]/img").values()[0]
+					imagecounter += 1
+				end
+				imagecounter = 1
 				pagecounter += 1
 			end
 			@temp.each_with_index do |t,t_index|
@@ -24,6 +31,7 @@ class SerimayasController < ApplicationController
 						house['size'] = inner[-3].gsub!(',','').to_i
 						house['price'] = (inner[-1]).gsub(/,/, '').to_i
 						house['link'] = link[t_index][i_index]
+						house['image_link'] = image[i_index]
 						inner[(inner.index('on')+1)][10] != "*" ? house['bed'] = inner[(inner.index('on')+1)][10].to_i : house['bed'] = inner[(inner.index('on')+1)][11].to_i
 						if inner[(inner.index('on')+1)].include?("Fully")
 							house['furnish'] = "Fully furnished"

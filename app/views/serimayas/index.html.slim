@@ -1,34 +1,34 @@
-.container
-  .row
-    .col-md-12
-      h1 Seri Maya
-      .data-content
-        ul.nav.nav-tabs role="tablist"
-          li.active role="presentation" 
-            a aria-controls="home" data-toggle="tab" href="#home" role="tab"  PropWall
-          li role="presentation" 
-            a aria-controls="profile" data-toggle="tab" href="#profile" role="tab"  iProperty
-        .tab-content
-          #home.tab-pane.active role="tabpanel"
-            .row
-              - @houses.each do |house|
-                .col-md-3
-                  .card
-                    .row
-                      .col-md-12.name
-                        = link_to house.name, house.link
-                    .row
-                      .col-md-12.size
-                        = "#{house.size} sf"
-                    .row
-                      .col-md-4.bed
-                        i.fa.fa-bed = " #{house.bed}"
-                      .col-md-8.furnish
-                        = house.furnish
-                    .row
-                      .col-md-12.date
-                        i.fa.fa-calendar = " #{house.date}"
-                    .row
-                      .col-md-12.price
-                        i.fa.fa-usd = " #{number_with_delimiter(house.price)}"
-          #profile.tab-pane role="tabpanel"  To be added soon!
+h1 Seri Maya
+.data-content
+  ul.nav.nav-tabs role="tablist"
+    li.active role="presentation" 
+      a aria-controls="home" data-toggle="tab" href="#home" role="tab"  PropWall
+    li role="presentation" 
+      a aria-controls="profile" data-toggle="tab" href="#profile" role="tab"  iProperty
+  .tab-content
+    #home.tab-pane.active role="tabpanel"
+      .row
+        - @houses.each do |house|
+          .col-md-3
+            .card
+              .row
+                .col-md-12.image
+                  = image_tag(house.image_link)
+              .row
+                .col-md-12.price
+                  = fa_icon 'usd', text: " #{number_with_delimiter(house.price)}"
+              .row.first-line
+                .col-md-5.size
+                  = fa_icon 'home', text: "#{house.size} sf"
+                .col-md-7.furnish
+                  = fa_icon 'bell', text: house.furnish
+              .row.second-line
+                .col-md-5.bed
+                  = fa_icon 'bed', text: " #{house.bed}"
+                .col-md-7.date
+                  = fa_icon 'calendar', text: " #{house.date}"
+              hr
+              .row
+                .col-md-12.name
+                  = link_to house.name.titleize, house.link
+    #profile.tab-pane role="tabpanel"  To be added soon!
