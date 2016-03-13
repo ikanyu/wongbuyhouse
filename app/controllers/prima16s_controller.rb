@@ -7,6 +7,7 @@ class Prima16sController < ApplicationController
 			link = []
 			image = []
 			pagecounter = 1
+			imagecounter = 1
 			starts = (Date.today - 31)
 			counter = 1
 			while pagecounter <= 10
@@ -29,7 +30,7 @@ class Prima16sController < ApplicationController
 						house['name'] = inner[0..(inner.index('on')-1)].join(' ')
 						house['date'] = inner[(inner.index('on')+1)][0..9]
 						house['size'] = inner[-3]
-						house['price'] = (inner[-2]).gsub(/,/, '').to_i
+						house['price'] = (inner[-1]).gsub(/,/, '').to_i
 						house['link'] = link[t_index][i_index]
 						house['image_link'] = image[i_index]
 						inner[(inner.index('on')+1)][10] != "*" ? house['bed'] = inner[(inner.index('on')+1)][10] : house['bed'] = inner[(inner.index('on')+1)][11]
