@@ -1,7 +1,7 @@
 require 'date'
 class SerimayasController < ApplicationController
 	def index
-		if Serimaya.all.empty? || ((Time.now - Serimaya.first.created_at)/1.day).round >= 1
+		if Serimaya.all.empty? || Time.now >= Serimaya.first.updated_at + 1.day
 			Serimaya.destroy_all
 			@temp = []
 			link = []
