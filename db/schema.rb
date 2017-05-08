@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20160313082557) do
     t.integer  "size"
     t.integer  "price"
     t.string   "link"
-    t.integer  "bed"
+    t.string   "bed"
     t.string   "furnish"
     t.datetime "created_at"
     t.datetime "updated_at"

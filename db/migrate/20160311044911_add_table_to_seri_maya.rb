@@ -6,7 +6,7 @@ class AddTableToSeriMaya < ActiveRecord::Migration
   		t.integer :size
   		t.integer :price
   		t.string :link
-  		t.integer :bed
+  		t.string :bed
   		t.string :furnish
 
   		t.timestamps
