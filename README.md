@@ -1,9 +1,7 @@
 # WongBuyHouse
+**This repository is no longer maintained since last commit.**
 
 App to summarize and monitor pricing of selected properties my family is aiming to purchase
-
-## Website
-http://wongbuyhouse.herokuapp.com/
 
 ## Setup
 ```
